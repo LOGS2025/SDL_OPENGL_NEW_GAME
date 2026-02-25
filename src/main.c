@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
     //  On Linux structs must be initialized!
     Game game = {0};
 
-    Origin origin = {W_Width/2, W_Height/2};
+    Origin origin = {W_Width/2.0, W_Height/2.0};
 
     /**********INITIALIZE GAME STRUCT AND ELEMENTS**********/
     if(init(&game)!=0)
@@ -94,32 +94,21 @@ int main(int argc, char* argv[])
 int axis(Game* game, Origin origin, char* c){
 if(c=="x"){
     SDL_RenderDrawLine(game->render, 
-        origin.x_o-W_Width/2, 
+        origin.x_o-W_Width/2.0, 
         origin.y_o,
-        origin.x_o+W_Width/2,
+        origin.x_o+W_Width/2.0,
         origin.y_o);
     return 0;
 }
 if(c=="y"){
     SDL_RenderDrawLine(game->render, 
         origin.x_o, 
-        origin.y_o-W_Height/2,
+        origin.y_o-W_Height/2.0,
         origin.x_o,
-        origin.y_o+W_Height/2);
+        origin.y_o+W_Height/2.0);
     return 0;
 }
 else return 1;
-}
-
-// Inputs parameter t into the written function
-int vectorF(Game* game, Origin origin, int x, int y){
-    // F(x,y)=yi
-    Vector vec;
-    SDL_RenderDrawLineF(game->render,vec.x,vec.y,origin.x_o,origin.y_o);
-
-
-
-    return 0;
 }
 
 int gameloop(Game* game)
